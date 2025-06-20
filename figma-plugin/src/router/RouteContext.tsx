@@ -3,12 +3,12 @@ import { ROUTES } from "./models/ROUTES";
 
 type RouteContextValues = {
   currentRoute: Readonly<(typeof ROUTES)[keyof typeof ROUTES]>;
-  setCurrentRoute: (route: string) => void;
+  setCurrentRoute: (route: (typeof ROUTES)[keyof typeof ROUTES]) => void;
   routes: Readonly<string[]>;
 };
 
 export const RouteContext = createContext<RouteContextValues>({
-  currentRoute: "/",
+  currentRoute: ROUTES.HOME,
   setCurrentRoute: () => {
     throw new Error("There was an issue establishing Route Context");
   },
